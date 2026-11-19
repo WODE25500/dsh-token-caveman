@@ -1,0 +1,5 @@
+# Keep the tree LF everywhere. Without this, a Windows checkout with
+# core.autocrlf=true rewrites every file to CRLF, which breaks `git am` of
+# patches cut from this repo and trips scripts/check-skills.mjs, whose YAML
+# frontmatter match expects a bare LF after the opening `---`.
+* text=auto eol=lf

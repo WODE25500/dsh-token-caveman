@@ -8,9 +8,15 @@
 
 ## 安装
 
-    dsh plugin --profile web add dsh-token-caveman
+DSH 桌面端自己管理自己的 profile。用桌面端的 **插件 → 添加插件**,指向本目录:它会把这个 bundle 装进桌面端真正在跑的那个 profile。
 
-然后调用 skill: `dsh-token-caveman`.
+命令行(需 `dsh` 在 PATH 上),`--profile` 是必填项,名字必须是你在用的那个 profile:
+
+    dsh plugin --profile desktop add dsh-token-caveman
+
+`dsh plugin` 只是把参数转发给该 profile 目录里的 pnpm —— 包装上了,但 bundle 还得在这个 profile 里启用。注意 `--profile web` 是另一个 profile:装到那里,桌面端看不到这个 skill。
+
+装完开一个新会话,技能目录才会收录它。然后直接让 agent 用这个技能,或者提一句 `dsh-token-caveman`。
 
 ## 上游
 
@@ -19,4 +25,3 @@
 ## 许可
 
 MIT
-

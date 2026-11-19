@@ -8,9 +8,15 @@ Compress the agent own output so every reply costs fewer tokens. A style discipl
 
 ## Install
 
-    dsh plugin --profile web add dsh-token-caveman
+DSH Desktop manages its own profile. Use **Plugins → Add plugin** there and point it at this directory; that installs the bundle and registers it in the profile the desktop app actually runs.
 
-Then invoke the skill: `dsh-token-caveman`.
+Command line, with `dsh` on your PATH — `--profile` is required, and the profile name has to be the one you run:
+
+    dsh plugin --profile desktop add dsh-token-caveman
+
+`dsh plugin` only forwards its arguments to pnpm inside that profile directory. The package gets installed, but the bundle still has to be enabled in the profile. Note that `--profile web` is a different profile: installing there does not make the skill show up in DSH Desktop.
+
+After installing, start a new session so the skill catalog picks it up. Then tell the agent to use the skill, or just mention: `dsh-token-caveman`.
 
 ## Upstream
 
@@ -19,4 +25,3 @@ Based on / referencing [https://www.npmjs.com/package/skill-caveman](https://www
 ## License
 
 MIT
-
